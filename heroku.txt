@@ -1,0 +1,11 @@
+run from ./app directory!
+docker build -f Dockerfile.prod -t registry.heroku.com/evening-savannah-62338/web .
+
+docker push registry.heroku.com/evening-savannah-62338/web:latest
+
+heroku container:release web --app evening-savannah-62338
+
+
+httpie:
+
+http --json POST https://evening-savannah-62338.herokuapp.com/medications/ name="Morphine"
